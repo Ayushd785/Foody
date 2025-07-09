@@ -1,7 +1,7 @@
 const express = require("express");
 const {
-  getRestaurant,
   getMenu,
+  getRestaurants,
 } = require("../controllers/restaurantController");
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.get("/test", (req, res) => {
   });
 });
 
-router.get("/restaurant", getRestaurant);
+router.get("/restaurant", getRestaurants);
 router.get("/restaurant/:id/menu", getMenu);
 
 module.exports = router;

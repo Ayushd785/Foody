@@ -128,5 +128,6 @@ module.exports = {
   createRetaurant,
   updateRestaurant,
   getRestaurant,
+  getRestaurants,
   getMenu,
 };
