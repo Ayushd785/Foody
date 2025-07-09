@@ -86,7 +86,7 @@ const updateItem = async (req, res) => {
     await Menu.findOneAndUpdate({ _id: itemId }, req.body, { new: true });
     res.status(200).json({
       msg: "Item updated successfully",
-    });
+    }); 
   } catch (err) {
     res.status(500).json({
       msg: "Server issue",
