@@ -1,3 +1,4 @@
+const Menu = require("../models/Menu");
 const Restaurant = require("../models/Restaurant");
 
 // CREATE restaurant
@@ -86,9 +87,9 @@ const getRestaurant = async (req, res) => {
 };
 
 // get all the restaurant mainly for Users
-const getRestaurants = (req, res) => {
+const getRestaurants = async (req, res) => {
   try {
-    const restaurants = Restaurant.find({});
+    const restaurants = await Restaurant.find({});
     res.status(200).json({
       restaurants,
     });
@@ -102,6 +103,26 @@ const getRestaurants = (req, res) => {
 
 // get the menu of a specific restaurant
 
+const getMenu = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const menuItems = await Menu.find({ restaurantId: id });
+
+    if (!menuItems || menuItems.length == 0) {
+      res.status(403).json({
+        msg: "No menu exist for this restaurant",
+      });
+    }
+    res.status(200).json({
+      menuItems,
+    });
+  } catch (err) {
+    res.status(500).json({
+      msg: "Server down",
+      error: err,
+    });
+  }
+};
 
 module.exports = {
   createRetaurant,
