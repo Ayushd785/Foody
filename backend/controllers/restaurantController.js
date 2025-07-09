@@ -85,6 +85,24 @@ const getRestaurant = async (req, res) => {
   }
 };
 
+// get all the restaurant mainly for Users
+const getRestaurants = (req, res) => {
+  try {
+    const restaurants = Restaurant.find({});
+    res.status(200).json({
+      restaurants,
+    });
+  } catch (Err) {
+    res.status(404).json({
+      msg: "Server down",
+      error: Err,
+    });
+  }
+};
+
+// get the menu of a specific restaurant
+
+
 module.exports = {
   createRetaurant,
   updateRestaurant,
