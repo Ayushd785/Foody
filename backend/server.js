@@ -33,3 +33,6 @@ app.use("/api/menu/", menuRoutes);
 
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/user", userRoutes);
+
+const cartRoutes = require("./routes/cartRoutes");
+app.use("/api/user/cart", cartRoutes);
